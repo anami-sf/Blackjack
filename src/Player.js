@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './Card';
 
 const Player = ({CardArr}) => {
+    if (CardArr) {
         const Cards = CardArr.map(card => {
             return(
                     <Card 
@@ -18,7 +19,9 @@ const Player = ({CardArr}) => {
                 <div>
                     {Cards}
                 </div>
-        )            
+        ) 
+    }
+    return null;           
 }
 
 export default Player;

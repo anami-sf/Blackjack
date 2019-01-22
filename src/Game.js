@@ -8,28 +8,10 @@ class Game extends Component {
         super()
         this.state = {
             deck: CardArr,
-            player: [{
-                number: 21, 
-                suit: 'A', 
-                value: 21, 
-                key: `1A`,
-                img: '/CardImages/2H.jpg',
-            }],
+            player: null,
             dealer: [],
         }
     }
-
-/*
-    componentDidMount(){
-        let deckCopy = this.state.deck.slice();
-        let topCard = deckCopy.pop();
-        this.setState({deck: deckCopy});
-        let playerHand = this.state.deck.slice();
-        playerHand = playerHand.unshift(topCard);
-        this.setState({player: playerHand});
-        this.setState({playear: playerHand})
-    }
-*/
 
     handleClick = () => {
         
@@ -37,11 +19,19 @@ class Game extends Component {
         let topCard = deckCopy.pop();
         console.log(topCard)
         this.setState({deck: deckCopy});
-        let playerHand = this.state.player.slice();
-        playerHand = playerHand.push(topCard);
-        this.setState({player: playerHand});
         console.log(deckCopy);
-        console.log(playerHand);
+
+        if (!this.state.player) {
+            let playerHand = [];
+            playerHand.push(topCard);
+            this.setState({player: playerHand}); 
+            console.log('playerHand' + playerHand)
+        } else {
+            var hand = this.state.player
+            hand.push(topCard);
+            this.setState({player: hand}); 
+            console.log('hand' + hand)
+        }
     }
     
     
@@ -58,6 +48,7 @@ class Game extends Component {
             </div>
         );
     }
+
 }
     
     export default Game;
