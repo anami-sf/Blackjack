@@ -58,16 +58,16 @@ class Game extends Component {
     
     render(){
         return(
-            <div>
+            <div className = 'tc '>
                 {console.log(this.state.deck)}
                 {console.log(this.state.player)}
-                <input onClick={() => this.deal()} type="button" value="Deal"></input>
+                <input className='ma4 ' onClick={() => this.deal()} type="button" value="Deal"></input>
                 <input onClick={() => this.handleClick()} type="button" value="Hit"></input>
-                <p>Dealer Hand</p>
+                <h2>Dealer Hand</h2>
                 <Dealer CardArr = {this.state.dealer} />
-                <p>Player Hand</p>
+                <h2>Player Hand</h2>
                 <Player CardArr = {this.state.player} />
-                <p>Deck</p>
+                <h2>Deck</h2>
                 <Deck CardArr = {this.state.deck} />
             </div>
         );

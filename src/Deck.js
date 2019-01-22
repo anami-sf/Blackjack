@@ -14,6 +14,7 @@ const Deck = ({CardArr}) => {
             )
         })
 
+
         return (
                 <div>
                 {Cards}
