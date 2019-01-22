@@ -1,16 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from './Card';
-//import PlayerHand from './PlayerHand';
 
-class Player extends Component{
-    constructor({CardArr}){
-        super({CardArr})
-        this.state = {
-            score: 0 
-        }
-    }
-
-    render(){
+const Player = ({CardArr}) => {
     if (CardArr) {
         const Cards = CardArr.map(card => {
             return(
@@ -20,8 +11,7 @@ class Player extends Component{
                         value = {card.value} 
                         image = {card.img}
                         key ={`${card.number}{${card.suit}`}
-                    />
-                    
+                      />
             )
         })
 
@@ -31,8 +21,7 @@ class Player extends Component{
                 </div>
         ) 
     }
-    return null;   
-    }           
+    return null;           
 }
 
 export default Player;
