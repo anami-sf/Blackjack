@@ -8,12 +8,15 @@ class Game extends Component {
         super()
         this.state = {
             deck: CardArr,
-            player: [],
+            player: null,
             dealer: [],
         }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> playerComponent
     handleClick = () => {
         
         let deckCopy = this.state.deck.slice();
@@ -21,11 +24,26 @@ class Game extends Component {
         console.log(topCard)
         this.setState({deck: deckCopy});
         console.log(deckCopy);
+<<<<<<< HEAD
         /* 
         let playerHand = this.state.player.slice();
         playerHand = playerHand.push(topCard);
         this.setState({player: playerHand});
         console.log(playerHand); */
+=======
+
+        if (!this.state.player) {
+            let playerHand = [];
+            playerHand.push(topCard);
+            this.setState({player: playerHand}); 
+            console.log('playerHand' + playerHand)
+        } else {
+            var hand = this.state.player
+            hand.push(topCard);
+            this.setState({player: hand}); 
+            console.log('hand' + hand)
+        }
+>>>>>>> playerComponent
     }
     
     
@@ -42,6 +60,7 @@ class Game extends Component {
             //<Player CardArr = {this.state.player} />
         );
     }
+
 }
     
     export default Game;
