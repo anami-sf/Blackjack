@@ -3,8 +3,10 @@ import Card from './Card';
 
 const Dealer = ({CardArr}) => {
     if (CardArr) {
-        let score =0
+
+        let score =0;
         const Cards = CardArr.map(card => {
+
             return(
                     score =  score + card.value,
                     <Card 
@@ -14,7 +16,7 @@ const Dealer = ({CardArr}) => {
                         image = {card.img}
                         key ={`${card.number}{${card.suit}`}
                       />
-            )
+            );
         })
 
         return (
@@ -22,9 +24,25 @@ const Dealer = ({CardArr}) => {
                     <p>Dealer Hand Total: {score}</p>
                     {Cards}
                 </div>
-        ) 
+        ); 
     }
     return null;           
 }
 
-export default Dealer;
+const DealerHandTotal = ({CardArr}) => {
+    if (CardArr) {
+
+        let score =0
+        const Total = CardArr.map(card => {
+            
+            return(
+                    score =  score + card.value
+            );
+        })
+
+        return (Total); 
+    }
+    return null;           
+}
+
+export {Dealer, DealerHandTotal} ;

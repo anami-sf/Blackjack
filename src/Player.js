@@ -3,7 +3,7 @@ import Card from './Card';
 
 const Player = ({CardArr}) => {
     if (CardArr) {
-        let score =0
+        let score = 0;
         const Cards = CardArr.map(card => {
             return(
                     score =  score + card.value,
@@ -14,7 +14,7 @@ const Player = ({CardArr}) => {
                         image = {card.img}
                         key ={`${card.number}{${card.suit}`}
                       />
-            )
+            );
         })
 
         return (
@@ -26,5 +26,6 @@ const Player = ({CardArr}) => {
     }
     return null;           
 }
+
 
 export default Player;
