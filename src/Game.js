@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { CardArr } from './CardArr';
 import Deck from './Deck';
-//import Player from './Player';
+import Player from './Player';
 
 class Game extends Component {
     constructor(){
@@ -13,10 +13,6 @@ class Game extends Component {
         }
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> playerComponent
     handleClick = () => {
         
         let deckCopy = this.state.deck.slice();
@@ -24,13 +20,6 @@ class Game extends Component {
         console.log(topCard)
         this.setState({deck: deckCopy});
         console.log(deckCopy);
-<<<<<<< HEAD
-        /* 
-        let playerHand = this.state.player.slice();
-        playerHand = playerHand.push(topCard);
-        this.setState({player: playerHand});
-        console.log(playerHand); */
-=======
 
         if (!this.state.player) {
             let playerHand = [];
@@ -43,7 +32,6 @@ class Game extends Component {
             this.setState({player: hand}); 
             console.log('hand' + hand)
         }
->>>>>>> playerComponent
     }
     
     
@@ -54,10 +42,10 @@ class Game extends Component {
                 {console.log(this.state.player)}
                 <input onClick={() => this.handleClick()} type="button" value="Deal"></input>
                 <p>Player Hand</p>
+                <Player CardArr = {this.state.player} />
                 <p>Deck</p>
                 <Deck CardArr = {this.state.deck} />
             </div>
-            //<Player CardArr = {this.state.player} />
         );
     }
 
