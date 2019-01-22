@@ -9,9 +9,11 @@ class Game extends Component {
         this.state = {
             deck: CardArr,
             player: null,
+            playerScore: 0,
             dealer: [],
         }
     }
+
 
     handleClick = () => {
         
