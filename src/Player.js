@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
-const Deck = ({CardArr}) => {
+const Player = ({CardArr}) => {
         const Cards = CardArr.map(card => {
             return(
                     <Card 
@@ -16,12 +16,9 @@ const Deck = ({CardArr}) => {
 
         return (
                 <div>
-                {Cards}
+                    {Cards}
                 </div>
-        )
-
-        
-    
+        )            
 }
 
-export default Deck;
+export default Player;

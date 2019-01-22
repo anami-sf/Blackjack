@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Card = ({number, suit}) => {
+const Card = ({number, suit, value, image}) => {
     return(
-        <div className = 'tc ba bw2 pa2 mw4 ma2 grow'> 
-            <p>{number}</p>
-            <p>of</p>
-            <p>{suit}</p>
+        <div className = 'ma2 grow'> 
+            <p>suit: {suit}, number: {number}, value: {value}</p>
+            <img src={process.env.PUBLIC_URL + image} alt="Error" width="80"></img>
         </div>
     );
 }
 
 export default Card;
+
+
+/*<img src={`https://robohash.org/${id}?200x200`} alt="robots"></img>*/
