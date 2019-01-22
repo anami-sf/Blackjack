@@ -29,11 +29,11 @@ class Game extends Component {
         } else {
             var hand = this.state.player
             hand.push(topCard);
-            this.setState({player: hand}); 
+            this.setState({player: this.state.player.push(topCard)}); 
+            console.log(this.state.player)
             console.log('hand' + hand)
         }
     }
-    
     
     render(){
         return(
