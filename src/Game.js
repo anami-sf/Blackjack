@@ -27,31 +27,18 @@ class Game extends Component {
             return 0; 
         }          
     }
-    
-    
-    
-    updatePlayerHand = (hand) => {
-        return this.setState({playerHand: hand});
-    }
-    
-    setDeck = (arr) => {
-        return this.setState({deck: arr});
-    }
-    
-    winner = () => {
-        if (this.state.winner >= 10){
-            this.setState({winner: 'Player'});
-        }
+
+    takeCard = () => {
+        let deckCopy = this.state.deck.slice();
+        let topCard = deckCopy.shift();
+        this.setState({deck: deckCopy});
+        return topCard;
     }
     
     hit = () => {
-        //take one card from deck 
-        let deckCopy = this.state.deck.slice();
-        let topCard = deckCopy.pop(1);
-        this.setDeck(deckCopy);
         //Add card to player's hand
         let hand = this.state.playerHand
-        hand.push(topCard);
+        hand.push(this.takeCard());
         this.setState({playerHand: hand}); 
     }
     
