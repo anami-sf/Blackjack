@@ -15,18 +15,6 @@ class Game extends Component {
             dealerHand: null,
         }
     }
-    
-    score = (cardArr) => {
-        if (cardArr) {          
-            const handTotal = cardArr.reduce((score, card) => {
-                return score + card.value
-            }, 0);
-            
-            return (handTotal);
-        } else {
-            return 0; 
-        }          
-    }
 
     takeCard = () => {
         let deckCopy = this.state.deck.slice();
