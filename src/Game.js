@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import { CardArr } from './CardArr';
 import Deck from './Deck';
-import Player from './Player';
-import { Dealer } from './Dealer';
-//import Winner from './Winner.js';
 import Score from './Score.js';
 
 class Game extends Component {
@@ -35,7 +32,7 @@ class Game extends Component {
             this.setState({playerHand: playerHand});
             
             //Deal two cars to dealer          
-            this.setState({dealer: cardArr});
+            this.setState({dealerHand: cardArr});
         }else{
             alert('You must hit or stand')
         }
@@ -54,14 +51,10 @@ class Game extends Component {
     render(){
         return(
             <div className = 'tc '>
-            <input className='ma4 ' onClick={() => this.deal()} type="button" value="Play"></input>
-            <input onClick={() => this.hit()} type="button" value="Hit"></input>
-            
+            <input className='ma2 ' onClick={() => this.deal()} type="button" value="Play"></input>
+            <input className='ma2 ' onClick={() => this.hit()} type="button" value="Hit"></input>          
             <Score playerHand = {this.state.playerHand} dealerHand = {this.state.dealerHand} />
-            <h2>Dealer Hand</h2>
-            <Dealer CardArr = {this.state.dealer} />
-            <h2>Player Hand</h2>
-            <Player CardArr = {this.state.playerHand} />
+
             <h2>Deck</h2>
             <Deck CardArr = {this.state.deck} />
             </div>
@@ -70,5 +63,6 @@ class Game extends Component {
 }
     
     export default Game;
+
     
     

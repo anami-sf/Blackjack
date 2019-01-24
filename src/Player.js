@@ -1,12 +1,12 @@
 import React from 'react';
 import Card from './Card';
 
-const Player = ({CardArr}) => {
+const Player = ({CardArr, playerTotal}) => {
     if (CardArr) {
-        let score = 0;
+
         const Cards = CardArr.map(card => {
+
             return(
-                    score =  score + card.value,
                     <Card 
                         number = {card.number} 
                         suit = {card.suit} 
@@ -18,14 +18,13 @@ const Player = ({CardArr}) => {
         })
 
         return (
-                <div>
-                    <p>Player Hand Total: {score}</p>
-                    {Cards}
-                </div>
-        ) 
+            <div>
+                <h2> Player Total: {playerTotal} </h2>
+                {Cards}
+            </div>
+        ); 
     }
     return null;           
 }
-
 
 export default Player;

@@ -1,14 +1,12 @@
 import React from 'react';
 import Card from './Card';
 
-const Dealer = ({CardArr}) => {
+const Dealer = ({CardArr, dealerTotal}) => {
     if (CardArr) {
 
-        let score =0;
         const Cards = CardArr.map(card => {
 
             return(
-                    score =  score + card.value,
                     <Card 
                         number = {card.number} 
                         suit = {card.suit} 
@@ -20,29 +18,13 @@ const Dealer = ({CardArr}) => {
         })
 
         return (
-                <div>
-                    <p>Dealer Hand Total: {score}</p>
-                    {Cards}
-                </div>
+            <div>
+                <h2> Player Total: {dealerTotal} </h2>
+                {Cards}
+            </div>
         ); 
     }
-    return null;           
+    return null;     
 }
 
-const DealerHandTotal = ({CardArr}) => {
-    if (CardArr) {
-
-        let score =0
-        const Total = CardArr.map(card => {
-            
-            return(
-                    score =  score + card.value
-            );
-        })
-
-        return (Total); 
-    }
-    return null;           
-}
-
-export {Dealer, DealerHandTotal} ;
+export default Dealer;
