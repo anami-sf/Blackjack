@@ -11,54 +11,55 @@ class Game extends Component {
         super()
         this.state = {
             deck: CardArr,
-            playerHand: [],
+            playerHand: null,
             dealerHand: null,
+            playerTurn: true,
         }
     }
-
-    takeCard = () => {
-        let deckCopy = this.state.deck.slice();
-        let topCard = deckCopy.shift();
-        this.setState({deck: deckCopy});
-        return topCard;
-    }
     
-    hit = () => {
-        //Add card to player's hand
-        let hand = this.state.playerHand
-        hand.push(this.takeCard());
-        this.setState({playerHand: hand}); 
-    }
+    // Takes (num) number of cards from deck starting at index (i).
+    takeCards = (num) => {
+        const deckCopy = this.state.deck.slice();
+        const hand = deckCopy.splice(0, num);
+        this.setState({deck: deckCopy});
+        return hand;
+    }           
     
     deal = () => {
-        
-        let deckCopy = this.state.deck.slice();
-        let topCard = deckCopy.pop();
-        //console.log(topCard)
-        this.setState({deck: deckCopy});
-        //console.log(deckCopy);
-        
-        if (!this.state.dealer) {
-            let dealerHand = [];
-            dealerHand.push(topCard);
-            this.setState({dealer: dealerHand}); 
-            //console.log('dealerHand' + dealerHand)
-        } else {
-            var hand = this.state.dealer
-            hand.push(topCard);
-            this.setState({dealer: hand}); 
-            //console.log('hand' + hand)
+        if (!this.state.playerHand){
+            
+            //Take four cards from deck
+            const cardArr = this.takeCards(4); 
+    
+            //Deal two cards to player
+            const playerHand = cardArr.splice(0, 2);
+            this.setState({playerHand: playerHand});
+            
+            //Deal two cars to dealer          
+            this.setState({dealer: cardArr});
+        }else{
+            alert('You must hit or stand')
         }
     }
+     
+    hit = () => {
+        //Add card to player's hand
+        let hand = this.state.playerHand;
+        console.log(hand);
+        const card = this.takeCards(1)
+        console.log(card)
+        console.log(hand)
+        this.setState({playerHand: hand.concat(card)}); 
+    }  
     
     //<Winner winner = {this.state.winner} PlayerHandTotal = {this.state.PlayerHandTotal}/>
     render(){
         return(
             <div className = 'tc '>
-            <input className='ma4 ' onClick={() => this.deal()} type="button" value="Deal"></input>
+            <input className='ma4 ' onClick={() => this.deal()} type="button" value="Play"></input>
             <input onClick={() => this.hit()} type="button" value="Hit"></input>
             
-            <Score playerHand = {this.state.playerHand} />
+            <Score playerHand = {this.state.playerHand} dealerHand = {this.state.dealerHand} />
             <h2>Dealer Hand</h2>
             <Dealer CardArr = {this.state.dealer} />
             <h2>Player Hand</h2>
@@ -66,10 +67,9 @@ class Game extends Component {
             <h2>Deck</h2>
             <Deck CardArr = {this.state.deck} />
             </div>
-            );
-        }
-        
-    }
+        );
+    }        
+}
     
     export default Game;
     
