@@ -13,7 +13,6 @@ class Game extends Component {
             deck: CardArr,
             playerHand: null,
             dealerHand: null,
-            playerTurn: true,
         }
     }
     
@@ -52,7 +51,6 @@ class Game extends Component {
         this.setState({playerHand: hand.concat(card)}); 
     }  
     
-    //<Winner winner = {this.state.winner} PlayerHandTotal = {this.state.PlayerHandTotal}/>
     render(){
         return(
             <div className = 'tc '>
