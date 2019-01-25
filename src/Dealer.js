@@ -19,7 +19,7 @@ const Dealer = ({CardArr, dealerTotal}) => {
 
         return (
             <div>
-                <h2> Player Total: {dealerTotal} </h2>
+                <h2> Dealer Total: {dealerTotal} </h2>
                 {Cards}
             </div>
         ); 
